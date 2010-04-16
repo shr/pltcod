@@ -220,6 +220,12 @@
    (right-ctrl _uint8)
    (shift _uint8)))
 
+(define _renderer
+  (_enum '(glsl opengl sdl num-renderers)))
+
+(define _alignment
+  (_enum '(left right center)))
+
 (define _console (_cpointer/null "tcod-console"))
 
 ; void TCOD_console_init_root(int w, int h, const char * title, bool fullscreen);

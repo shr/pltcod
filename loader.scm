@@ -14,6 +14,6 @@
     [(_ name : type ...)
      (define name (get-ffi-obj
                    (regexp-replaces 'name '((#rx"-" "_")
-                                            (#rx"[+*?]" "")
+                                            (#rx"[+*?!]" "")
                                             (#rx"^" "TCOD_")))
                    libtcod (_fun type ...)))]))

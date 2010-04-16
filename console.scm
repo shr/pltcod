@@ -255,6 +255,23 @@
 ; void TCOD_console_put_char_ex(TCOD_console_t con,int x, int y, int c, TCOD_color_t fore, TCOD_color_t back)
 (deftcod console-put-char-ex : _console _int _int _int _color _color -> _void)
 
+(deftcod console-set-background-flag! : _console _background -> _void)
+(deftcod console-get-background-flag : _console -> _background)
+
+(deftcod console-set-alignment! : _console _alignment -> _void)
+(deftcod console-get-alignment : _console -> _alignment)
+
+(deftcod console-print : _console _int _int _string -> _void)
+(deftcod console-print-ex : _console _int _int _background _alignment
+  _string -> _void)
+
+(deftcod console-print-rect : _console _int _int _int _int _string ->
+  _int)
+(deftcod console-print-rect-ex : _console _int _int _int _int
+  _background _alignment _string -> _int)
+(deftcod console-get-height-rect : _console _int _int _int _int
+  _string -> _int)
+  
 ; void TCOD_console_rect(TCOD_console_t con,int x, int y, int w, int h, bool clear, TCOD_bkgnd_flag_t flag);
 (deftcod console-rect : _console _int _int _int _int _bool _background -> _void)
 ; void TCOD_console_hline(TCOD_console_t con,int x,int y, int l, TCOD_bkgnd_flag_t flag);
@@ -265,6 +282,15 @@
 (deftcod console-print-frame : _console _int _int _int _int _bool _background _string -> _void)
 ;; unicode formattings
 (deftcod console-map-string-to-font-utf : _string/utf-16 _int _int -> _void)
+(deftcod console-print-utf : _console _int _int _string/utf-16 ->
+  _void)
+(deftcod console-print-ex-utf : _console _int _int _background
+  _alignment _string/utf-16 -> _void)
+(deftcod console-print-rect-ex-utf : _console _int _int _int _int
+  _background _alignment _string/utf-16 -> _int)
+(deftcod console-get-height-rect-utf : _console _int _int _int _int
+  _string/utf-16 -> _int)
+
 
 (deftcod console-get-background-color : _console -> _color)
 (deftcod console-get-foreground-color : _console -> _color)
@@ -296,5 +322,6 @@
   _void)
 (deftcod console-delete : _console -> _void)
 (deftcod console-credits : -> _void)
+(deftcod console-credits-reset : -> _void)
 (deftcod console-credits-render : _int _int _bool -> _bool)
 

@@ -229,7 +229,7 @@
 (define _console (_cpointer/null "tcod-console"))
 
 ; void TCOD_console_init_root(int w, int h, const char * title, bool fullscreen);
-(deftcod console-init-root : _int _int _string _bool -> _void)
+(deftcod console-init-root : _int _int _string _bool _renderer -> _void)
 (deftcod console-set-window-title : _string -> _void)
 (deftcod console-set-fullscreen : _bool -> _void)
 (deftcod console-is-fullscreen? : -> _bool)

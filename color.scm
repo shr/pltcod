@@ -115,12 +115,23 @@
   (silver 203 203 203)
   (gold 255 255 102))
 
+; constructors
+(deftcod color-RGB : _uint8 _uint8 _uint8 -> _color)
+(deftcod color-HSV : _float _float _float -> _color)
+
+; basic operations
 (deftcod color-equals? : _color _color -> _bool)
 (deftcod color-add : _color _color -> _color)
 (deftcod color-subtract : _color _color -> _color)
 (deftcod color-multiply : _color _color -> _color)
 (deftcod color-multiply-scalar : _color _float -> _color)
 (deftcod color-lerp : _color _color _float -> _color)
+
+; HSV transformations
+(deftcod color-get-hue : _color -> _float)
+(deftcod color-get-saturation : _color -> _float)
+(deftcod color-get-value : _color -> _float)
+
 (define (hsv->color h s v)
   (deftcod color-set-HSV : (c : (_ptr o _color)) _float _float _float -> _void -> c)
   (let ([c (color-set-HSV (exact->inexact h) (exact->inexact s) (exact->inexact v))])

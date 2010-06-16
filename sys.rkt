@@ -1,12 +1,10 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "image.scm"
-         "list.scm")
+(require ffi/unsafe
+         "loader.rkt"
+         "image.rkt"
+         "list.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (deftcod sys-elapsed-milli : -> _uint32)
 (deftcod sys-elapsed-seconds : -> _float)

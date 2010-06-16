@@ -1,9 +1,8 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm")
+(require ffi/unsafe
+         "loader.rkt")
 (provide (all-defined-out))
-(unsafe!)
 
 (define _line_listener (_fun _int _int -> _bool))
 

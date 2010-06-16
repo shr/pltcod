@@ -1,12 +1,10 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "mersenne.scm"
-         "noise.scm")
+(require ffi/unsafe
+         "loader.rkt"
+         "mersenne.rkt"
+         "noise.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (define-cstruct _heightmap
   ((w _int)

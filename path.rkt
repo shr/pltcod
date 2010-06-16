@@ -1,9 +1,8 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "fov.scm")
-(unsafe!)
+(require ffi/unsafe
+         "loader.rkt"
+         "fov.rkt")
 
 (define _map-path (_cpointer/null "tcod-path"))
 

@@ -1,11 +1,9 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "color.scm")
+(require ffi/unsafe
+         "loader.rkt"
+         "color.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (define _background
   (_enum

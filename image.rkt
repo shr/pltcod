@@ -1,12 +1,10 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "color.scm"
-         "console.scm")
+(require ffi/unsafe
+         "loader.rkt"
+         "color.rkt"
+         "console.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (define _image (_cpointer/null "tcod-image"))
 

@@ -1,7 +1,7 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm")
+(require ffi/unsafe
+         "loader.rkt")
 
 (unsafe!)
 

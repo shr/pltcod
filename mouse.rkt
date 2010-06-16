@@ -1,9 +1,7 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm")
-
-(unsafe!)
+(require ffi/unsafe
+         "loader.rkt")
 
 (define-cstruct _mouse
   ((x _int)

@@ -1,11 +1,9 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "color.scm"
-         "console.scm")
-
-(unsafe!)
+(require ffi/unsafe
+         "loader.rkt"
+         "color.rkt"
+         "console.rkt")
 
 (define _text (_cpointer/null "tcod-text"))
 

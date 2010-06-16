@@ -1,11 +1,9 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "mersenne.scm")
+(require ffi/unsafe
+         "loader.rkt"
+         "mersenne.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (define _noise (_cpointer/null "tcod-noise"))
 (define _floatvec (_vector i _float))

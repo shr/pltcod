@@ -1,13 +1,11 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "color.scm"
-         "console.scm"
-         "image.scm")
-(provide* (all-defined-out))
-
-(unsafe!)
+(require ffi/unsafe
+         "loader.rkt"
+         "color.rkt"
+         "console.rkt"
+         "image.rkt")
+(provide (all-defined-out))
 
 (define _zip (_cpointer/null "tcod-zip"))
 

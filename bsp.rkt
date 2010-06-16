@@ -1,10 +1,9 @@
-#lang scheme
+#lang racket
 
-(require scheme/foreign
-         "loader.scm"
-         "mersenne.scm"
-         "tree.scm")
-(unsafe!)
+(require ffi/unsafe
+         "loader.rkt"
+         "mersenne.rkt"
+         "tree.rkt")
 
 (define-cstruct _bsp
   ((tree _tree)

@@ -1,11 +1,9 @@
-#lang scheme
+#lang racket
 
 (require rnrs/arithmetic/bitwise-6
-         scheme/foreign
-         "loader.scm")
+         ffi/unsafe
+         "loader.rkt")
 (provide (all-defined-out))
-
-(unsafe!)
 
 (define-cstruct _color
   ((r _uint8)

@@ -171,27 +171,30 @@
                     [char (integer->char (tcod:key-c key))])
                (send player clear #f)
                (set! recompute-fov #f)
+               (printf "~s ~s~n" vk char)
                (cond
                 [(and (eq? 'key-enter vk) (tcod:key-left-alt key))
                  (tcod:console-set-fullscreen (not (tcod:console-is-fullscreen?)))
                  (k #f)]
-                [(or (eq? 'key-escape vk) (and (eq? 'key-char vk) (eq? char #\Q) (tcod:key-left-ctrl key)))
+                [(or (eq? 'key-escape vk) (and (eq? 'key-char vk)
+                                               (eq? char #\Q)
+                                               (tcod:key-left-ctrl key)))
                  (k #t)] ; shortcut
-                [(or (tcod:console-is-key-pressed? 'key-up) (tcod:console-is-key-pressed? 'keypad-8))
+                [(or (eq? vk 'key-up) (eq? vk 'keypad-8))
                  (send player move dungeon-map 0 -1)]
-                [(or (tcod:console-is-key-pressed? 'key-down) (tcod:console-is-key-pressed? 'keypad-2)) 
+                [(or (eq? vk 'key-down) (eq? vk 'keypad-2))
                  (send player move dungeon-map 0 1)]
-                [(or (tcod:console-is-key-pressed? 'key-left) (tcod:console-is-key-pressed? 'keypad-4))
+                [(or (eq? vk 'key-left) (eq? vk 'keypad-4))
                  (send player move dungeon-map -1 0)]
-                [(or (tcod:console-is-key-pressed? 'key-right) (tcod:console-is-key-pressed? 'keypad-6))
+                [(or (eq? vk 'key-right) (eq? vk 'keypad-6))
                  (send player move dungeon-map 1 0)]
-                [(tcod:console-is-key-pressed? 'keypad-7)
+                [(eq? vk 'keypad-7)
                  (send player move dungeon-map -1 -1)]
-                [(tcod:console-is-key-pressed? 'keypad-9)
+                [(eq? vk 'keypad-9)
                  (send player move dungeon-map 1 -1)]
-                [(tcod:console-is-key-pressed? 'keypad-3)
+                [(eq? vk 'keypad-3)
                  (send player move dungeon-map 1 1)]
-                [(tcod:console-is-key-pressed? 'keypad-1)
+                [(eq? vk 'keypad-1)
                  (send player move dungeon-map -1 1)])
                (set! recompute-fov #t)
                #f))))
@@ -230,7 +233,7 @@
 
 (define (main-loop)
   (tcod:console-set-custom-font "data/fonts/prestige12x12_gs_tc.png" 12 -1 -1)
-  (tcod:console-init-root screen-width screen-height "scheme/libtcod tutorial" #f 'glsl)
+  (tcod:console-init-root screen-width screen-height "scheme/libtcod tutorial" #f 'sdl)
   (tcod:sys-set-fps limit-fps)
   (let* ([player (new visible-dungeon-object%
                       [x: player-x]

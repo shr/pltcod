@@ -211,8 +211,8 @@
 (define-cstruct _key
   ((vk _keycode)
    (c _uint8)
-   (pressed _bool)
-   (left-alt _bool)
+   (pressed _uint8)
+   (left-alt _uint8)
    (left-ctrl _uint8)
    (right-alt _uint8)
    (right-ctrl _uint8)

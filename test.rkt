@@ -261,6 +261,7 @@
               (fov-computer fov-map player))
             (render-all dungeon-map fov-map objects #f)
             (tcod:console-flush)
-            (loop #f)))))))
+            (loop #f))
+          (tcod:sys-term))))))
 
 (main-loop)

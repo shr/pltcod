@@ -54,4 +54,7 @@
 (deftcod condition-wait : _cond _mutex -> _void)
 (deftcod condition-delete : _cond -> _void)
 
+; internal functions
+(deftcod sys-term : -> _void)
+
 ;;; SDL renderer

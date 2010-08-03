@@ -28,3 +28,14 @@
 (deftcod random-get-gaussian-double-range-custom : _random _double _double _double -> _double)
 (deftcod random-get-gaussian-float-range-custom : _random _float _float _float -> _float)
 (deftcod random-get-gaussian-int-range-custom : _random _int _int _int -> _int)
+
+(deftcod random-get-gaussian-double-inv : _random _double _double -> _double)
+(deftcod random-get-gaussian-float-inv : _random _float _float -> _float)
+(deftcod random-get-gaussian-int-inv : _random _int _int -> _int)
+(deftcod random-get-gaussian-double-range-inv : _random _double _double -> _double)
+(deftcod random-get-gaussian-float-range-inv : _random _float _float -> _float)
+(deftcod random-get-gaussian-int-range-inv : _random _int _int -> _int)
+(deftcod random-get-gaussian-double-range-custom-inv : _random _double _double _double -> _double)
+(deftcod random-get-gaussian-float-range-custom-inv : _random _float _float _float -> _float)
+(deftcod random-get-gaussian-int-range-custom-inv : _random _int _int _int -> _int)
+

@@ -27,7 +27,7 @@
     
     (define/public (draw console fov-map)
       (when (tcod:map-is-in-fov? fov-map x y)
-        (tcod:console-set-foreground-color console color)
+        (tcod:console-set-default-foreground console color)
         (tcod:console-put-char console x y (char->integer char)
                                'background-none)))
     
@@ -211,10 +211,11 @@
               (when visible
                 (send pv set-explored!))
               (when (send pv explored?)
-                (tcod:console-set-back console x y
-                                       (if (send (matrix-ref dungeon-map x y) transparent?)
-                                           (if visible color-light-ground color-dark-ground)
-                                           (if visible color-light-wall color-dark-wall)) 'background-set))))))
+                (tcod:console-set-char-background
+                 console x y
+                 (if (send (matrix-ref dungeon-map x y) transparent?)
+                     (if visible color-light-ground color-dark-ground)
+                     (if visible color-light-wall color-dark-wall)) 'background-set))))))
 
 (define (set-fov-map-properties dungeon-map fov-map)
   (for ([y (in-range map-height)])

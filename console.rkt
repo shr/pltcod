@@ -242,11 +242,11 @@
 (deftcod console-map-string-to-font : _string _int _int -> _void)
 
 (deftcod console-set-dirty : _int _int _int _int -> _void)
-(deftcod console-set-background-color : _console _color -> _void)
-(deftcod console-set-foreground-color : _console _color -> _void)
+(deftcod console-set-default-background : _console _color -> _void)
+(deftcod console-set-default-foreground : _console _color -> _void)
 (deftcod console-clear : _console -> _void)
-(deftcod console-set-back : _console _int _int _color _background -> _void)
-(deftcod console-set-fore : _console _int _int _color -> _void)
+(deftcod console-set-char-background : _console _int _int _color _background -> _void)
+(deftcod console-set-char-foreground : _console _int _int _color -> _void)
 ; void TCOD_console_set_char(TCOD_console_t con,int x, int y, int c);
 (deftcod console-set-char : _console _int _int _int -> _void)
 (deftcod console-put-char : _console _int _int _int _background -> _void)
@@ -290,10 +290,10 @@
   _string/utf-16 -> _int)
 
 
-(deftcod console-get-background-color : _console -> _color)
-(deftcod console-get-foreground-color : _console -> _color)
-(deftcod console-get-back : _console _int _int -> _color)
-(deftcod console-get-fore : _console _int _int -> _color)
+(deftcod console-get-default-background : _console -> _color)
+(deftcod console-get-default-foreground : _console -> _color)
+(deftcod console-get-char-background : _console _int _int -> _color)
+(deftcod console-get-char-foreground : _console _int _int -> _color)
 (deftcod console-get-char : _console _int _int -> _int)
 
 (deftcod console-set-fade : _uint8 _color -> _void)

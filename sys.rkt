@@ -11,6 +11,7 @@
 (deftcod sys-sleep-milli : _uint32 -> _void)
 (deftcod sys-save-screenshot : _string -> _void)
 (deftcod sys-force-fullscreen-resolution : _int _int -> _void)
+(deftcod sys-get-fullscreen-offsets : (x : (_ptr o _int)) (y : (_ptr o _int)) -> _void -> (list x y))
 (deftcod sys-set-fps : _int -> _void)
 (deftcod sys-get-fps : -> _int)
 (deftcod sys-get-last-frame-length : -> _float)

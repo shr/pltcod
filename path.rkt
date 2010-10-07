@@ -17,6 +17,8 @@
 (deftcod path-walk : _map-path (x : (_ptr o _int)) (y : (_ptr o _int)) _bool -> (r : _bool) ->
   (values r (cons x y)))
 (deftcod path-is-empty? : _map-path -> _bool)
+(deftcod path-size : _map-path -> _int)
+(deftcod path-reverse : _map-path -> _void)
 (deftcod path-get : _map-path _int (x : (_ptr o _int)) (y : (_ptr o _int)) -> _void ->
   (cons x y))
 (deftcod path-get-origin : _map-path (x : (_ptr o _int)) (y : (_ptr o _int)) -> _void ->
@@ -31,6 +33,9 @@
 (deftcod dijkstra-compute : _dijkstra-path _int _int -> _void)
 (deftcod dijkstra-get-distance : _dijkstra-path _int _int -> _float)
 (deftcod dijkstra-path-set : _dijkstra-path _int _int -> _void)
+(deftcod dijkstra-is-empty? : _dijkstra-path -> _bool)
+(deftcod dijkstra-size : _dijkstra-path -> _int)
+(deftcod dijkstra-reverse : _dijkstra-path -> _void)
 (deftcod dijkstra-path-walk : _dijkstra-path (x : (_ptr o _int)) (y : (_ptr o _int)) ->
   (r : _bool) -> (values r (cons x y)))
 (deftcod dijkstra-delete : _dijkstra-path -> _void)

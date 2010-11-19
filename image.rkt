@@ -15,6 +15,7 @@
 (deftcod image-clear : _image _color -> _void)
 (deftcod image-invert : _image -> _void)
 (deftcod image-hflip : _image -> _void)
+(deftcod image-rotate90 : _image _int -> _void)
 (deftcod image-vflip : _image -> _void)
 (deftcod image-scale : _image _int _int -> _void)
 (deftcod image-save : _image _string -> _void)

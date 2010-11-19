@@ -9,6 +9,16 @@
    '(rng-mersenne-twister
      rng-cmwc)))
 
+(define _distribution
+  (_enum
+   '(linear gaussian gaussian-range gaussian-inverse gaussian-range-inverse)))
+
+(define-cstruct _dice
+  ((nb-rolls _int)
+   (nb-faces _int)
+   (multiplier _float)
+   (addsub _float)))
+
 (define _random (_cpointer/null "tcod-random"))
 
 (deftcod random-get-instance : -> _random)
@@ -16,26 +26,16 @@
 (deftcod random-save : _random -> _random)
 (deftcod random-restore : _random _random -> _random)
 (deftcod random-new-from-seed : _uint32 -> _random)
+(deftcod random-delete : _random -> _void)
+(deftcod random-set-distribution : _random _distribution -> _void)
+
 (deftcod random-get-int : _random _int _int -> _int)
 (deftcod random-get-float : _random _float _float -> _float)
-(deftcod random-delete : _random -> _void)
-(deftcod random-get-gaussian-double : _random _double _double -> _double)
-(deftcod random-get-gaussian-float : _random _float _float -> _float)
-(deftcod random-get-gaussian-int : _random _int _int -> _int)
-(deftcod random-get-gaussian-double-range : _random _double _double -> _double)
-(deftcod random-get-gaussian-float-range : _random _float _float -> _float)
-(deftcod random-get-gaussian-int-range : _random _int _int -> _int)
-(deftcod random-get-gaussian-double-range-custom : _random _double _double _double -> _double)
-(deftcod random-get-gaussian-float-range-custom : _random _float _float _float -> _float)
-(deftcod random-get-gaussian-int-range-custom : _random _int _int _int -> _int)
+(deftcod random-get-double : _random _double _double -> _double)
+(deftcod random-get-int-mean : _random _int _int _int -> _int)
+(deftcod random-get-float-mean : _random _float _float _float -> _float)
+(deftcod random-get-double-mean : _random _double _double _double -> _double)
 
-(deftcod random-get-gaussian-double-inv : _random _double _double -> _double)
-(deftcod random-get-gaussian-float-inv : _random _float _float -> _float)
-(deftcod random-get-gaussian-int-inv : _random _int _int -> _int)
-(deftcod random-get-gaussian-double-range-inv : _random _double _double -> _double)
-(deftcod random-get-gaussian-float-range-inv : _random _float _float -> _float)
-(deftcod random-get-gaussian-int-range-inv : _random _int _int -> _int)
-(deftcod random-get-gaussian-double-range-custom-inv : _random _double _double _double -> _double)
-(deftcod random-get-gaussian-float-range-custom-inv : _random _float _float _float -> _float)
-(deftcod random-get-gaussian-int-range-custom-inv : _random _int _int _int -> _int)
-
+(deftcod random-dice-new : _string -> _dice)
+(deftcod random-dice-roll : _random _dice -> _int)
+(deftcod random-dice-roll-s : _random _string -> _int)

@@ -24,6 +24,7 @@
 (deftcod sys-delete-directory : _string -> _bool)
 (deftcod sys-is-directory? : _string -> _bool)
 (deftcod sys-get-directory-content : _string _string -> _lst)
+(deftcod sys-file-exists? : _string -> _bool)
 
 ;;; should we really use this?
 

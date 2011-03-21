@@ -233,7 +233,8 @@
   (tcod:map-compute-fov fov-map (send player get-x) (send player get-y) torch-radius fov-light-walls fov-algo))
 
 (define (main-loop)
-  (tcod:console-set-custom-font "data/fonts/prestige12x12_gs_tc.png" 12 -1 -1)
+  (tcod:console-set-custom-font "data/fonts/prestige12x12_gs_tc.png"
+  '(font-layout-tcod font-type-greyscale) -1 -1)
   (tcod:console-init-root screen-width screen-height "scheme/libtcod tutorial" #f 'sdl)
   (tcod:sys-set-fps limit-fps)
   (let* ([player (new visible-dungeon-object%

@@ -233,7 +233,7 @@
 (deftcod console-is-fullscreen? : -> _bool)
 (deftcod console-is-window-closed? : -> _bool)
 ; void TCOD_console_set_custom_font(const char *fontFile, int flags,int nb_char_horiz, int nb_char_vertic);
-(deftcod console-set-custom-font : _string _int _int _int -> _void)
+(deftcod console-set-custom-font : _string _font-flag _int _int -> _void)
 ; void TCOD_console_map_ascii_code_to_font(int asciiCode, int fontCharX, int fontCharY);
 (deftcod console-map-ascii-code-to-font : _int _int _int -> _void)
 ; void TCOD_console_map_ascii_codes_to_font(int asciiCode, int nbCodes, int fontCharX, int fontCharY);

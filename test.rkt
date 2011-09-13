@@ -166,38 +166,38 @@
 
 (define (handle-keys dungeon-map player)
   (call/cc (lambda (k)
-             (let* ([key (tcod:console-wait-for-keypress #t)]
-                    [vk (tcod:key-vk key)]
-                    [char (integer->char (tcod:key-c key))])
-               (send player clear #f)
-               (set! recompute-fov #f)
-               (printf "~s ~s~n" vk char)
-               (cond
-                [(and (eq? 'key-enter vk) (tcod:key-left-alt key))
-                 (tcod:console-set-fullscreen (not (tcod:console-is-fullscreen?)))
-                 (k #f)]
-                [(or (eq? 'key-escape vk) (and (eq? 'key-char vk)
-                                               (eq? char #\Q)
-                                               (tcod:key-left-ctrl key)))
-                 (k #t)] ; shortcut
-                [(or (eq? vk 'key-up) (eq? vk 'keypad-8))
-                 (send player move dungeon-map 0 -1)]
-                [(or (eq? vk 'key-down) (eq? vk 'keypad-2))
-                 (send player move dungeon-map 0 1)]
-                [(or (eq? vk 'key-left) (eq? vk 'keypad-4))
-                 (send player move dungeon-map -1 0)]
-                [(or (eq? vk 'key-right) (eq? vk 'keypad-6))
-                 (send player move dungeon-map 1 0)]
-                [(eq? vk 'keypad-7)
-                 (send player move dungeon-map -1 -1)]
-                [(eq? vk 'keypad-9)
-                 (send player move dungeon-map 1 -1)]
-                [(eq? vk 'keypad-3)
-                 (send player move dungeon-map 1 1)]
-                [(eq? vk 'keypad-1)
-                 (send player move dungeon-map -1 1)])
-               (set! recompute-fov #t)
-               #f))))
+             (let-values ([(r key m) (tcod:sys-wait-for-event 'key-press #f)])
+               (let* ([vk (tcod:key-vk key)]
+                      [char (integer->char (tcod:key-c key))])
+                 (send player clear #f)
+                 (set! recompute-fov #f)
+                 (printf "~s ~s~n" vk char)
+                 (cond
+                   [(and (eq? 'key-enter vk) (tcod:key-left-alt key))
+                    (tcod:console-set-fullscreen (not (tcod:console-is-fullscreen?)))
+                    (k #f)]
+                   [(or (eq? 'key-escape vk) (and (eq? 'key-char vk)
+                                                  (eq? char #\Q)
+                                                  (tcod:key-left-ctrl key)))
+                    (k #t)] ; shortcut
+                   [(or (eq? vk 'key-up) (eq? vk 'keypad-8))
+                    (send player move dungeon-map 0 -1)]
+                   [(or (eq? vk 'key-down) (eq? vk 'keypad-2))
+                    (send player move dungeon-map 0 1)]
+                   [(or (eq? vk 'key-left) (eq? vk 'keypad-4))
+                    (send player move dungeon-map -1 0)]
+                   [(or (eq? vk 'key-right) (eq? vk 'keypad-6))
+                    (send player move dungeon-map 1 0)]
+                   [(eq? vk 'keypad-7)
+                    (send player move dungeon-map -1 -1)]
+                   [(eq? vk 'keypad-9)
+                    (send player move dungeon-map 1 -1)]
+                   [(eq? vk 'keypad-3)
+                    (send player move dungeon-map 1 1)]
+                   [(eq? vk 'keypad-1)
+                    (send player move dungeon-map -1 1)])
+                 (set! recompute-fov #t)
+                 #f)))))
 
 (define (on-all fn all . args)
   (map (λ (x) (send x fn . args)) all))

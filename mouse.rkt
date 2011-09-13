@@ -17,6 +17,7 @@
    (mbutton-pressed? _bool)
    (wheel-up? _bool)
    (wheel-down? _bool)))
+(provide _mouse)
 
 (deftcod mouse-get-status : -> _mouse)
 (deftcod mouse-show-cursor : _bool -> _void)

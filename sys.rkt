@@ -1,7 +1,9 @@
 #lang racket
 
 (require ffi/unsafe
+         "console.rkt"
          "loader.rkt"
+         "mouse.rkt"
          "image.rkt"
          "list.rkt")
 (provide (all-defined-out))
@@ -55,6 +57,20 @@
 (deftcod condition-broadcast : _cond -> _void)
 (deftcod condition-wait : _cond _mutex -> _void)
 (deftcod condition-delete : _cond -> _void)
+
+(define _event
+  (_enum
+   '(key-press = 1
+     key-release = 2
+     key = 3
+     mouse-move = 4
+     mouse-press = 8
+     mouse-release = 16
+     mouse = 28
+     any = 31)))
+
+(deftcod sys-wait-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) _bool -> (r : _event) -> (list r k m))
+(deftcod sys-check-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) -> (r : _event) -> (list r k m))
 
 ; internal functions
 (deftcod sys-term : -> _void)

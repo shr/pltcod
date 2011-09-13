@@ -304,13 +304,12 @@
 
 (deftcod console-set-color-control : _color-control _color _color -> _void)
 
-; (deftcod console-check-for-keypress : _int -> _key)
-; (deftcod console-wait-for-keypress : _bool -> _key)
 ; void TCOD_console_set_keyboard_repeat(int initial_delay, int interval);
 (deftcod console-set-keyboard-repeat : _int _int -> _void)
 (deftcod console-disable-keyboard-repeat : -> _void)
 (deftcod console-is-key-pressed? : _keycode -> _bool)
 
+(deftcod console-from-file : _string -> _console)
 (deftcod console-load-asc : _console _string -> _bool)
 (deftcod console-save-asc : _console _string -> _bool)
 

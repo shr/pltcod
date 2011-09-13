@@ -62,15 +62,15 @@
   (_bitmask
    '(key-press = 1
      key-release = 2
-     key = (list 'key-press 'key-release)
+     key = 3
      mouse-move = 4
      mouse-press = 8
      mouse-release = 16
-     mouse = (list 'mouse-move 'mouse-press 'mouse-release)
-     any = (list 'key 'mouse))))
+     mouse = 28
+     any = 31)))
 
-(deftcod sys-wait-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) _bool -> (r : _event) -> (list r k m))
-(deftcod sys-check-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) -> (r : _event) -> (list r k m))
+(deftcod sys-wait-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) _bool -> (r : _event) -> (values r k m))
+(deftcod sys-check-for-event : _event (k : (_ptr o _key)) (m : (_ptr o _mouse)) -> (r : _event) -> (values r k m))
 
 ; internal functions
 (deftcod sys-term : -> _void)

@@ -1,6 +1,0 @@
-Racket Language (formerly PLT Scheme) bindings to libtcod
-
-The current bindings are updated to the svn version of libtcod, which means
-they do not work with the 1.5.0 version!
-
-libtcod homepage: http://doryen.eptalys.net/libtcod/
